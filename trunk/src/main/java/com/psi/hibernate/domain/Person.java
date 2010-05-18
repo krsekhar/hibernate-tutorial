@@ -15,13 +15,14 @@ public class Person {
     private String firstname;
     private String lastname;
     private Set events = new HashSet();
+    private Set emailAddresses = new HashSet();
 
-    public Set getEvents() {
-        return events;
+    public Set getEmailAddresses() {
+        return emailAddresses;
     }
 
-    public void setEvents(Set events) {
-        this.events = events;
+    public void setEmailAddresses(Set emailAddresses) {
+        this.emailAddresses = emailAddresses;
     }
 
     public int getAge() {
@@ -54,6 +55,24 @@ public class Person {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
+    }
+
+    public Set getEvents() {
+        return events;
+    }
+
+    public void setEvents(Set events) {
+        this.events = events;
+    }
+
+    public void addToEvent(Event event) {
+        this.getEvents().add(event);
+        event.getParticipants().add(this);
+    }
+
+    public void removeFromEvent(Event event) {
+        this.getEvents().remove(event);
+        event.getParticipants().remove(this);
     }
 
     public Person() {}
