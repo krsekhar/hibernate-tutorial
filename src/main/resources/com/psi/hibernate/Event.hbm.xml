@@ -1,21 +1,15 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC
-        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="com.psi.hibernate.domain">
-
-    <class name="Event" table="EVENTS">
-        <id name="id" column="EVENT_ID">
-            <generator class="native"/>
-        </id>
-        <property name="date" type="timestamp" column="EVENT_DATE"/>
-        <property name="title"/>
-
-        <set name="participants" table="PERSON_EVENT" inverse="true">
-            <key column="EVENT_ID"/>
-            <many-to-many column="PERSON_ID" class="events.Person"/>
-        </set>
-    </class>
-
+  <class name="Event" table="EVENTS">
+    <id column="EVENT_ID" name="id">
+      <generator class="native"/>
+    </id>
+    <property column="EVENT_DATE" name="date" type="timestamp"/>
+    <property name="title"/>
+    <set inverse="true" name="participants" table="PERSON_EVENT">
+      <key column="EVENT_ID"/>
+      <many-to-many class="Person" column="PERSON_ID"/>
+    </set>
+  </class>
 </hibernate-mapping>
