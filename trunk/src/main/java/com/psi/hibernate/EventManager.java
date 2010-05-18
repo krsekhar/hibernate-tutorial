@@ -15,7 +15,7 @@ import com.psi.hibernate.domain.Person;
 import com.psi.hibernate.util.HibernateUtil;
 
 public class EventManager {
-
+/*
     public static void main(String[] args) {
         EventManager mgr = new EventManager();
 
@@ -23,7 +23,7 @@ public class EventManager {
             mgr.createAndStoreEvent("My Event", new Date());
         }
         else if (args[0].equals("list")) {
-            List events = mgr.listEvents();
+            List events = mgr.getEventList();
             for (int i = 0; i < events.size(); i++) {
                 Event theEvent = (Event) events.get(i);
                 System.out.println(
@@ -33,22 +33,18 @@ public class EventManager {
         }
         else if (args[0].equals("addpersontoevent")) {
             Long eventId = mgr.createAndStoreEvent("My Event", new Date());
-            List<Long> personIdList = mgr.createAndStorePerson((int)Math.random()%50,"Foo", "Bar");
-            for(Long id:personIdList){
-                mgr.addPersonToEvent(id, eventId);
-            }
+            Long personId = mgr.createAndStorePerson((int)Math.random()%50,"Foo", "Bar");
+                mgr.addPersonToEvent(personId, eventId);
         }
         else if (args[0].equals("addEmailToPerson")) {
-            List<Long> personIdList = mgr.createAndStorePerson((int)Math.random()%50,"Foo", "Bar");
-            for(Long id:personIdList){
-                mgr.addEmailToPerson(id, "myeamail@host.com");
-            }
+            Long personId = mgr.createAndStorePerson((int)Math.random()%50,"Foo", "Bar");
+                mgr.addEmailToPerson(personId, "myeamail@host.com");
         }
 
         HibernateUtil.getSessionFactory().close();
     }
-
-    private Long createAndStoreEvent(String title, Date theDate) {
+*/
+    public Long createAndStoreEvent(String title, Date theDate) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
 
@@ -66,7 +62,7 @@ public class EventManager {
         return id;
     }
 
-    private List<Long> createAndStorePerson(int age,String firstName, String lastName) {
+    public Long createAndStorePerson(int age,String firstName, String lastName) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
 
@@ -77,14 +73,14 @@ public class EventManager {
         session.save(thePerson);
 
         //Fetch auto generated Id
-        List<Long> idList=(List)session.createQuery("select p.id from Person p where p.age= :age")
-                .setParameter("age", age).list();
+        Long id=(Long)session.createQuery("select bottom 1 p.id from Person p where p.age= :age")
+                .setParameter("age", age).uniqueResult();
                 
         session.getTransaction().commit();
-        return idList;
+        return id;
     }
 
-    private List listEvents() {
+    public List getEventList() {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         List result = session.createQuery("from Event").list();
@@ -92,15 +88,16 @@ public class EventManager {
         return result;
     }
 
-    private void addPersonToEvent(Long personId, Long eventId) {
+    public boolean addPersonToEvent(Long personId, Long eventId) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
 
         Person aPerson = (Person) session.load(Person.class, personId);
         Event anEvent = (Event) session.load(Event.class, eventId);
-        aPerson.getEvents().add(anEvent);
+        boolean result=aPerson.getEvents().add(anEvent);
 
         session.getTransaction().commit();
+        return result;
     }
 
     private void addEmailToPerson(Long personId, String emailAddress) {
@@ -112,6 +109,14 @@ public class EventManager {
         aPerson.getEmailAddresses().add(emailAddress);
 
         session.getTransaction().commit();
+    }
+
+    public List<Person> getPersonList() {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        List result = session.createQuery("from Person").list();
+        session.getTransaction().commit();
+        return result;
     }
 
 }

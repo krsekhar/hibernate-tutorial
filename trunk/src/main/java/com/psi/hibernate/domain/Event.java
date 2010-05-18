@@ -14,13 +14,23 @@ import java.util.Set;
  * @author chetans
  */
 public class Event {
+
     private Long id;
 
     private String title;
     private Date date;
     private Set participants = new HashSet();
+    private Person person;
 
     public Event() {}
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
 
     public Long getId() {
         return id;
