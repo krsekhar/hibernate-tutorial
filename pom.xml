@@ -67,6 +67,7 @@
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
             <version>2.3</version>
+            <scope>provided</scope>
         </dependency>
 
         <!-- Hibernate uses slf4j for logging, for our purposes here use the simple backend -->
@@ -112,10 +113,17 @@
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>jsp-api</artifactId>
             <version>2.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>standard</groupId>
+            <artifactId>standard</artifactId>
+            <version>1.0</version>
         </dependency>
     </dependencies>
 
 </project>
+
 
 
 

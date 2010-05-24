@@ -5,7 +5,6 @@
 
 package com.psi.hibernate.domain;
 
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,7 +17,7 @@ public class Event {
     private Long id;
 
     private String title;
-    private Date date;
+    private String date;
     private Set participants = new HashSet();
     private Person person;
 
@@ -40,11 +39,11 @@ public class Event {
         this.id = id;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

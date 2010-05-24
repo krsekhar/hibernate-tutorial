@@ -5,8 +5,8 @@
 <html>
     <head><title>Add Person</title></head>
     <body>
-        <%@include file="/index.jsp" %>
-        <form name="addperson" action="/eventmanager" method="post">
+        <%@include file="../index.jsp" %>
+        <form name="addperson" action="../eventmanager" method="post">
             <input type="hidden" name="actionparameter" value="person">
             <table>
                 <tr>

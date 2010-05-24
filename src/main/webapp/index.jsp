@@ -3,12 +3,12 @@
    "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
-    <head>Index Page</head>
+    <head><title>Index Page</title></head>
     <body>
         <h2 align="center">Person-Event Database</h2>
 
-        <a href="/jsp/addperson.jsp" >Add Person</a>
-        <a href="/jsp/addevent.jsp">Add Event</a>
-        <a href="/eventmanager?actionparameter=persontoevent">Add Person To event</a>
+        <a href="jsp/addperson.jsp" >Add Person</a>
+        <a href="jsp/addevent.jsp">Add Event</a>
+        <a href="eventmanager?actionparameter=persontoevent">Add Person To event</a>
     </body>
 </html>
