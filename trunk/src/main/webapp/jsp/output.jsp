@@ -5,7 +5,7 @@
 <html>
     <head><title>Result</title></head>
     <body>
-        <%@include file="/jsp/index.jsp" %>
-        $result
+        <%@include file="../index.jsp" %><br>
+        ${result}
     </body>
 </html>

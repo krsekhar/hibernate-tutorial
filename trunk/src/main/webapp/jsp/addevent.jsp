@@ -5,8 +5,8 @@
 <html>
     <head><title>Add Event</title></head>
     <body>
-        <%@include file="/index.jsp" %>
-        <form name="addevent" action="/eventmanager" method="post">
+        <%@include file="../index.jsp" %>
+        <form name="addevent" action="../eventmanager" method="post">
             <input type="hidden" name="actionparameter" value="event">
             <table>
                 <tr>

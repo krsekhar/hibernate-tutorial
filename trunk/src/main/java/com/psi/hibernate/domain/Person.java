@@ -12,8 +12,8 @@ public class Person {
 
     private Long id;
     private int age;
-    private String firstname;
-    private String lastname;
+    private String firstName;
+    private String lastName;
     private Set events = new HashSet();
     private Set emailAddresses = new HashSet();
 
@@ -33,12 +33,12 @@ public class Person {
         this.age = age;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setFirstName(String firstname) {
+        this.firstName = firstname;
     }
 
     public Long getId() {
@@ -49,12 +49,12 @@ public class Person {
         this.id = id;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastName(String lastname) {
+        this.lastName = lastname;
     }
 
     public Set getEvents() {
