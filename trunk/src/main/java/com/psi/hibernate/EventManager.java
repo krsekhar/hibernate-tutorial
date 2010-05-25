@@ -135,9 +135,8 @@ public class EventManager {
 
     private boolean isDuplicatePerson(Session session, int age, String firstName, String lastName) {
         try{
-            session.createQuery("select p from Person p where p.age=:age and p.firstName=:firstName and " +
+            session.createQuery("select p from Person p where p.firstName=:firstName and " +
                     "p.lastName=:lastName")
-                    .setParameter("age", age)
                     .setParameter("firstName", firstName)
                     .setParameter("lastName", lastName)
                     .uniqueResult();
@@ -161,6 +160,20 @@ public class EventManager {
             return true;
         }
         return false;
+    }
+
+    public String getEventTitle(Long eventId) {
+        Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        Event event=(Event) session.load(Event.class, eventId);
+        return event.getTitle();
+    }
+
+    public String getPerson(Long personId) {
+        Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        Person person=(Person) session.load(Person.class, personId);
+        return person.getFirstName()+" "+person.getLastName();
     }
 
 }

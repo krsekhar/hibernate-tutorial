@@ -3,6 +3,10 @@
     <servlet>
         <servlet-name>Event Manager</servlet-name>
         <servlet-class>com.psi.hibernate.web.EventManagerServlet</servlet-class>
+        <init-param>
+            <param-name>actionparameter</param-name>
+            <param-value>index</param-value>
+        </init-param>
     </servlet>
     <servlet-mapping>
         <servlet-name>Event Manager</servlet-name>
