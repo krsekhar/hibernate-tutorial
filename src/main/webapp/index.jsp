@@ -9,6 +9,6 @@
 
         <a href="jsp/addperson.jsp" >Add Person</a>
         <a href="jsp/addevent.jsp">Add Event</a>
-        <a href="eventmanager?actionparameter=persontoevent">Add Person To event</a>
+        <a href="eventmanager">Add Person To event</a>
     </body>
 </html>

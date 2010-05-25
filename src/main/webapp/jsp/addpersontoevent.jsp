@@ -9,7 +9,7 @@
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     <body>
         <%@include file="/index.jsp" %>
-        <form name="addpersontoevent" action="/eventmanager" method="post">
+        <form name="addpersontoevent" action="eventmanager" method="post">
             <input type="hidden" name="actionparameter" value="persontoevent">
             <table>
                 <tr>
@@ -17,17 +17,15 @@
                     <td align="left">
                         <select name="personlist">
                             <c:forEach items="${personlist}" var="person">
-                                <option id="${person.id}">${person.firstname} ${person.lastname}</option>
+                                <option value="${person.id}">${person.firstName} ${person.lastName}</option>
                             </c:forEach>
                         </select>
                     </td>
-                </tr>
-                <tr>
                     <td align="right">Select Event: </td>
                     <td align="left">
                         <select name="eventlist">
                             <c:forEach items="${eventlist}" var="event">
-                                <option id="${event.id}">${event.title}</option>
+                                <option value="${event.id}">${event.title} ${event.date}</option>
                             </c:forEach>
                         </select>
                     </td>
