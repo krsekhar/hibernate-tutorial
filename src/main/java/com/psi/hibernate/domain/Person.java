@@ -5,11 +5,21 @@
 
 package com.psi.hibernate.domain;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
-public class Person {
-
+@Entity
+@Table(name="PERSON")
+public class Person implements Serializable {
     private Long id;
     private int age;
     private String firstName;
@@ -17,6 +27,7 @@ public class Person {
     private Set events = new HashSet();
     private Set emailAddresses = new HashSet();
 
+    @Transient
     public Set getEmailAddresses() {
         return emailAddresses;
     }
@@ -33,6 +44,7 @@ public class Person {
         this.age = age;
     }
 
+    @Column(name="FIRSTNAME")
     public String getFirstName() {
         return firstName;
     }
@@ -41,14 +53,18 @@ public class Person {
         this.firstName = firstname;
     }
 
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name="PERSON_ID")
     public Long getId() {
         return id;
     }
 
-    private void setId(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
+    @Column(name="LASTNAME")
     public String getLastName() {
         return lastName;
     }
@@ -57,6 +73,10 @@ public class Person {
         this.lastName = lastname;
     }
 
+    @ManyToMany(
+        mappedBy="participants",
+        targetEntity=Event.class
+    )
     public Set getEvents() {
         return events;
     }

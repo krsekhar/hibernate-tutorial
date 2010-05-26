@@ -69,7 +69,7 @@ public class EventManager {
         return id;
     }
 
-    public Long createAndStorePerson(int age,String firstName, String lastName) {
+    public Long createAndStorePerson(int age,String firstName, String lastName) throws Exception{
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
 
@@ -81,17 +81,18 @@ public class EventManager {
             thePerson.setAge(age);
             thePerson.setFirstName(firstName);
             thePerson.setLastName(lastName);
-            session.save(thePerson);
+            Long id=(Long)session.save(thePerson);
+            return id;
         }
         //Fetch auto generated Id
-        Long id=(Long)session.createQuery("select p.id from Person p where p.age= :age and " +
-                "p.firstName=:firstName and p.lastName=:lastName")
-                .setParameter("age", age)
-                .setParameter("lastName", lastName)
-                .setParameter("firstName", firstName)
-                .uniqueResult();
-        session.getTransaction().commit();
-        return id;
+//        Long id=(Long)session.createQuery("select p.id from Person p where p.age= :age and " +
+//                "p.firstName=:firstName and p.lastName=:lastName")
+//                .setParameter("age", age)
+//                .setParameter("lastName", lastName)
+//                .setParameter("firstName", firstName)
+//                .uniqueResult();
+//        session.getTransaction().commit();
+//        return id;
     }
 
     public List getEventList() {
