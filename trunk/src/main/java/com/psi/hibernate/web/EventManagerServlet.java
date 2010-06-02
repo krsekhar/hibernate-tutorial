@@ -57,10 +57,9 @@ public class EventManagerServlet extends HttpServlet {
         Long id = new Long(1L);
         EventManager manager = new EventManager();
 
-        try{
-            if (actionName.equalsIgnoreCase("event")) {
+        if (actionName.equalsIgnoreCase("event")) {
             String title =req.getParameter("title");
-            DateFormat dateFormat = new SimpleDateFormat("mm:DD:yyyy");
+            DateFormat dateFormat = new SimpleDateFormat("MM:DD:yyyy");
             id=manager.createAndStoreEvent(title, dateFormat.format(new Date()));
             if(id>0)
                 result=title+" successfully added";
@@ -94,12 +93,6 @@ public class EventManagerServlet extends HttpServlet {
             else
                 result=manager.getPerson(personId)+" COULD NOT be added to "+manager.getEventTitle(eventId);
         }
-        }catch(Exception e){
-            System.out.println("Exception: "+e.getMessage());
-            e.printStackTrace();
-            result="Operation Unsuccessful.";
-        }
-
         req.setAttribute("result", result);
         req.getRequestDispatcher("/jsp/output.jsp").forward(req, resp);
         return;
