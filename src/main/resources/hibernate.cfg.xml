@@ -30,12 +30,10 @@
 
         <!-- Drop and re-create the database schema on startup -->
         <property name="hbm2ddl.auto">update</property>
-<!-- To be used without annotations
+
         <mapping resource="com/psi/hibernate/Event.hbm.xml"/>
         <mapping resource="com/psi/hibernate/Person.hbm.xml"/>
--->
-        <mapping class="com.psi.hibernate.domain.Person"/>
-        <mapping class="com.psi.hibernate.domain.Event"/>
+
     </session-factory>
 
 </hibernate-configuration>

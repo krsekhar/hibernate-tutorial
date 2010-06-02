@@ -10,5 +10,9 @@
         <a href="jsp/addperson.jsp" >Add Person</a>
         <a href="jsp/addevent.jsp">Add Event</a>
         <a href="eventmanager">Add Person To event</a>
+        <form action="search" name="searchform" method="get">
+            Search: <input type="text" size="15" name="searchbox">
+            <input type="submit" value="Search">
+        </form>
     </body>
 </html>
