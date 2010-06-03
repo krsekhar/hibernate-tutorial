@@ -127,12 +127,13 @@
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-annotations</artifactId>
-            <version>3.2.0.ga</version>
+            <artifactId>hibernate-commons-annotations</artifactId>
+            <version>3.3.0.ga</version>
         </dependency>
     </dependencies>
 
 </project>
+
 
 
 
