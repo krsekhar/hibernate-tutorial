@@ -6,7 +6,7 @@
       <generator class="native"/>
     </id>
     <property column="EVENT_DATE" name="date"/>
-    <property name="title"/>
+    <property name="title" column="title"/>
     <set inverse="true" name="participants" table="PERSON_EVENT">
       <key column="EVENT_ID"/>
       <many-to-many class="Person" column="PERSON_ID"/>
