@@ -1,0 +1,71 @@
+/* 
+    Document   : style
+    Created on : Jun 3, 2010, 7:50:43 PM
+    Author     : chetans
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+h2.logo{
+    position: fixed;
+
+    top: 10px;
+    left: 10px;
+    margin-bottom: 10px;
+    border-bottom-style: solid;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    font-size: 24px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+input.search{
+
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    text-align: right;
+    vertical-align: middle;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-bottom-style: solid;
+    border-top-style: solid;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    border-bottom-width: 1px;
+    border-top-width: 1px;
+    border-right-color: black;
+    border-left-color: black;
+    border-bottom-color: black;
+    border-top-color: black;
+    position: relative;
+    direction: rtl;
+    right: 75px;
+    width: 150px;
+    left: 900px;
+}
+
+input.searchButton{
+    
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    text-align: center;
+    vertical-align: middle;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-bottom-style: solid;
+    border-top-style: solid;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    border-bottom-width: 1px;
+    border-top-width: 1px;
+    border-right-color: black;
+    border-left-color: black;
+    border-bottom-color: black;
+    border-top-color: black;
+    position: relative;
+    left: 895px;
+}
+
