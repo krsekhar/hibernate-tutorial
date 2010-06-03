@@ -7,6 +7,8 @@ package com.psi.hibernate.domain;
 
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.Id;
+import org.hibernate.search.annotations.DocumentId;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Index;
 import org.hibernate.search.annotations.Indexed;
@@ -38,7 +40,7 @@ public class Person {
         this.age = age;
     }
 
-    @Field(index = Index.UN_TOKENIZED, store = Store.YES)
+    @Field(index = Index.TOKENIZED, store = Store.YES)
     public String getFirstName() {
         return firstName;
     }
@@ -47,6 +49,7 @@ public class Person {
         this.firstName = firstname;
     }
 
+    @DocumentId
     public Long getId() {
         return id;
     }
@@ -55,6 +58,7 @@ public class Person {
         this.id = id;
     }
 
+    @Field(index = Index.TOKENIZED, store = Store.YES)
     public String getLastName() {
         return lastName;
     }
@@ -82,4 +86,11 @@ public class Person {
     }
 
     public Person() {}
+
+    @Override
+    public String toString() {
+        return firstName+" "+lastName;
+    }
+
+
 }

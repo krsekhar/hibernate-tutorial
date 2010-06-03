@@ -7,11 +7,17 @@ package com.psi.hibernate.domain;
 
 import java.util.HashSet;
 import java.util.Set;
+import org.hibernate.search.annotations.DocumentId;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Index;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.Store;
 
 /**
  *
  * @author chetans
  */
+@Indexed
 public class Event {
 
     private Long id;
@@ -31,6 +37,7 @@ public class Event {
         this.person = person;
     }
 
+    @DocumentId
     public Long getId() {
         return id;
     }
@@ -47,6 +54,7 @@ public class Event {
         this.date = date;
     }
 
+    @Field(index=Index.TOKENIZED,store=Store.YES)
     public String getTitle() {
         return title;
     }
@@ -62,4 +70,11 @@ public class Event {
     public void setParticipants(Set participants) {
         this.participants = participants;
     }
+
+    @Override
+    public String toString() {
+        return title+" "+date;
+    }
+
+
 }
